@@ -1,0 +1,7 @@
+test*
+OLD*
+*.gch
+*.swp
+*.out
+main.c
+_putchar
