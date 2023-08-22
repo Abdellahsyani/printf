@@ -34,7 +34,7 @@ int print_b(va_list args)
 		var[b] = j;
 		b++;
 
-		_putchar("%d", va_arg(args, int);
+		_putchar("%d", j);
 	}
 	for (i = b - 1; i >= 0; i--)
 	{
