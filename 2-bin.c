@@ -8,7 +8,7 @@
  *
  * Return: success if 1, and error if -1
  */
-int putchar(char c)
+int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }

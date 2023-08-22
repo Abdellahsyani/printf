@@ -31,5 +31,5 @@ int print_d(va_list args)
 		d %= i;
 		i /= 10;
 	}
-	return (r)
+	return (r);
 }
