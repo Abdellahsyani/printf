@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -13,17 +12,19 @@ int _printf(const char *format, ...)
 	int n_chr, i, r;
 	va_list args;
 
-	va_start(args, format);
-	n_chr = i = 0;
-
-	while (format && format[i])
+	if (!format)
+		return (-1);
+	i = 0;
+	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
 		i++;
 	}
-	i = 0;
-	while (format && format[i])
+
+	va_start(args, format);
+	n_chr = i = 0;
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -69,7 +70,7 @@ int print_arg(va_list args, const char *nxt1)
 		{'d', print_d},
 		{'i', print_d},
 		{'b', print_b},
-		{'\0', NULL}
+		{'\0', 0}
 		};
 
 	while (arr[i].spec)
