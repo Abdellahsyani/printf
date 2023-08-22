@@ -16,9 +16,9 @@ int print_b(va_list args)
 
 	i = 0;
 	do {
-		j = arg % 2;
+		n = arg % 2;
 		arg = arg / 2;
-		var[i] = j + '0';
+		var[i] = n + '0';
 		i++;
 	} while (arg);
 
