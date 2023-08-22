@@ -15,6 +15,14 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	n_chr = i = 0;
+
+	while (format && format[i])
+	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+			return (-1);
+		i++;
+	}
+	i = 0;
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -64,9 +72,6 @@ int print_arg(va_list args, const char *nxt1)
 		{'\0', NULL}
 		};
 
-	if (*nxt1 == '%')
-		return (_putchar('%'));
-
 	while (arr[i].spec)
 	{
 		if (arr[i].spec == *nxt1)
@@ -77,5 +82,9 @@ int print_arg(va_list args, const char *nxt1)
 		i++;
 	}
 
-	return (-1);
+	_putchar('%');
+	if (*nxt1 == '%')
+	return (1);
+	_putchar(*nxt1);
+	return (2);
 }
