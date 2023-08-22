@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdarg.h>
 #include "main.h"
 
@@ -12,27 +11,20 @@
 int print_b(va_list args)
 {
 	unsigned int arg = va_arg(args, unsigned int);
-	unsigned int j, i = 1, n = 1;
-	char *var;
+	unsigned int i, n;
+	char var[32];
 
-	while (arg > i)
-	{
-		i *= 2;
-		n++;
-	}
-	var = malloc(sizeof(char) * n);
-	if (var == NULL)
-		return (-1);
-
-	for (i = 0; arg; i++)
-	{
+	i = 0;
+	do {
 		j = arg % 2;
 		arg = arg / 2;
 		var[i] = j + '0';
-	}
-	while (i > 0)
-		_putchar(var[--i]);
+		i++;
+	} while (arg);
 
-	free(var);
-	return (n - 1);
+	n = 0;
+	while (i > 0)
+		n += _putchar(var[--i]);
+
+	return (n);
 }
