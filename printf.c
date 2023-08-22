@@ -60,6 +60,7 @@ int print_arg(va_list args, const char *nxt1)
 		{'s', print_s},
 		{'d', print_d},
 		{'i', print_d},
+		{'b', print_b},
 		{'\0', NULL}
 		};
 
