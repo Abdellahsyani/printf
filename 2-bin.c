@@ -1,44 +1,38 @@
-#include "main.h"
 #include <stdlib.h>
-#include <string.h>
-
-/**
- * _putchar - writes character to stdout
- * @c: The character to print
- *
- * Return: success if 1, and error if -1
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+#include <stdarg.h>
+#include "main.h"
 
 /**
  * print_b - convert integer to binary
- * @args: The argument to be stored binary
+ * @args: The argument to be stored
  *
  * Return: The argument
  */
 
 int print_b(va_list args)
 {
-	int j, i;
-	int b = 0;
+	unsigned int arg = va_arg(args, unsigned int);
+	unsigned int j, i = 1, n = 1;
 	char *var;
 
-	var = (char *) malloc(sizeof(char));
-	while (args)
+	while (arg > i)
 	{
-		j = args % 2;
-		args = args / 2;
-		var[b] = j;
-		b++;
+		i *= 2;
+		n++;
+	}
+	var = malloc(sizeof(char) * n);
+	if (var == NULL)
+		return (-1);
 
-		_putchar("%d", j);
-	}
-	for (i = b - 1; i >= 0; i--)
+	for (i = 0; arg; i++)
 	{
-	_putchar("%d", var[i]);
+		j = arg % 2;
+		arg = arg / 2;
+		var[i] = j + '0';
 	}
-return (args);
+	while (i > 0)
+		_putchar(var[--i]);
+
+	free(var);
+	return (n - 1);
 }
